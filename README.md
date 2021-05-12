@@ -14,7 +14,7 @@ Here we run `mosdepth` and generate a very similar report.
 nextflow run brwnj/covdist -revision main -profile docker
     --crams '*.cram'
     --reference GRCh38.fasta
-    --gaps GRCh_gaps.bed
+    --gaps GRCh38_gaps.bed
 ```
 
 ## Gap info
