@@ -1,9 +1,13 @@
 # covdist
-simple coverage profile of aligned samples. useful for sequencing center feedback and topoffs.
+Perform simple coverage profiling of aligned samples. Admittedly this is
+a very simple tool, but is quite useful for sequencing center feedback and
+topoffs.
+
+Interactive example: https://brwnj.github.io/covdist/
 
 ## Note
 
-This is really just an extension of mosdepth's plot-dist.py script. See:
+This is an extension of mosdepth's plot-dist.py script. See:
 https://github.com/brentp/mosdepth/blob/master/scripts/plot-dist.py
 
 Here we run `mosdepth` and generate a very similar report.
