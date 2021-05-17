@@ -177,9 +177,17 @@ TEMPLATE = """<!DOCTYPE html>
         arr.forEach(function (sample_obj) {
             let sample = sample_obj.sample
 
+            let x_idx = data[chr][sample_obj.sample]["x"].indexOf(cutoff)
+            let i = 0
+            // occasionally x proportions have to be shifted slightly
+            while (x_idx == -1 && i < 10) {
+                i += 1
+                x_idx = data[chr][sample_obj.sample]["x"].indexOf(cutoff + i)
+            }
+
             let v;
             try {
-                v = data[chr][sample_obj.sample]["y"][data[chr][sample_obj.sample]["x"].indexOf(cutoff)]
+                v = data[chr][sample_obj.sample]["y"][x_idx]
             } catch (err) {
                 v = 0
             }
