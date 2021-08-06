@@ -23,11 +23,14 @@ nextflow run brwnj/covdist -revision main -profile docker
 
 ## Gap info
 
-Under group “Mapping and Sequencing” and track “Gap” at:
+A simple way to grab this info, to omit region of known gaps in coverage, is
+to head over to:
 
 https://genome.ucsc.edu/cgi-bin/hgTables
 
-Choose BED as your output format.
+1. Under `group:` select `Mapping and Sequencing`.
+2. For `track:` select `Gap`
+3. Set `output format:` as `BED` and define the file name.
 
 ## Autosomes
 
