@@ -90,7 +90,7 @@ process bedtools {
 
 process mosdepth {
     container "brwnj/covdist:v1.0.1"
-    publishDir "${params.outdir}/mosdepth"
+    publishDir "${params.outdir}/mosdepth", mode: "copy"
     cpus params.cpus
 
     input:
@@ -110,7 +110,7 @@ process mosdepth {
 
 process covdist {
     container "brwnj/covdist:v1.0.1"
-    publishDir params.outdir
+    publishDir params.outdir, mode: "copy"
 
     input:
     path(txts)
