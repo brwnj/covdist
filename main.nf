@@ -59,8 +59,6 @@ chroms = channel
     .filter( ~/(?!${exclude.collect {".*$it.*"}.join("|")})([a-zA-Z0-9_]+)/ )
 
 process makebed {
-    container "brwnj/covdist:v1.0.1"
-
     input:
     val chrs
     path(reference)
@@ -73,8 +71,6 @@ process makebed {
 }
 
 process bedtools {
-    container "brwnj/covdist:v1.0.1"
-
     input:
     path(genome)
     path(gaps)
@@ -89,7 +85,6 @@ process bedtools {
 }
 
 process mosdepth {
-    container "brwnj/covdist:v1.0.1"
     publishDir "${params.outdir}/mosdepth", mode: "copy"
     cpus params.cpus
 
@@ -109,7 +104,6 @@ process mosdepth {
 }
 
 process covdist {
-    container "brwnj/covdist:v1.0.1"
     publishDir params.outdir, mode: "copy"
 
     input:
