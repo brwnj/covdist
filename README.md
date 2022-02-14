@@ -39,7 +39,7 @@ communicate them with your sequencing center. That said, you likely want
 to exclude sex chromosomes using:
 
 ```
---exclude "decoy,random,chrUn,alt,chrEBV,chrM,chrX,chrY"
+--exclude "decoy,random,chrUn,alt,phix,chrEBV,chrM,chrX,chrY"
 ```
 
 # Report
