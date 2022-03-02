@@ -172,20 +172,16 @@ TEMPLATE = """<!DOCTYPE html>
         arr.forEach(function (sample_obj) {
             let sample = sample_obj.sample
 
-            let x_idx = data[chr][sample_obj.sample]["x"].indexOf(cutoff) || -1
+            let x_idx = -1
             let i = 0
             // occasionally x proportions have to be shifted slightly
             while (x_idx == -1 && i < 10) {
+                // .indexOf returns -1 when index not found
                 x_idx = data[chr][sample_obj.sample]["x"].indexOf(cutoff + i)
                 i += 1
             }
 
-            let v;
-            try {
-                v = data[chr][sample_obj.sample]["y"][x_idx]
-            } catch (err) {
-                v = 0
-            }
+            let v = data[chr][sample_obj.sample]["y"][x_idx] || 0
 
             a.push({
                 sample: sample_obj.sample,
