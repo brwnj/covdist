@@ -39,6 +39,8 @@ params.gaps = false
 params.outdir = './results'
 params.cpus = 4
 
+params.idx = false
+
 if(!params.crams) {
     exit 1, "--crams argument like '/path/to/*.cram' is required"
 }
@@ -48,6 +50,14 @@ if(!params.reference) {
 if(!params.gaps) {
     exit 1, "--gaps argument is required"
 }
+
+if(!params.idx) {
+    idx = path("${params.reference}.fai")
+} else {
+    idx = path(params.idx)
+}
+if( !idx.exists() ) exit 1, "Missing reference index: ${idx}"
+
 
 crams = channel.fromPath(params.crams)
 crais = crams.map { it -> it + ("${it}".endsWith('.cram') ? '.crai' : '.bai') }
@@ -117,7 +127,7 @@ process covdist {
 }
 
 workflow {
-    makebed(chroms.collect(), "${params.reference}.fai")
+    makebed(chroms.collect(), idx)
     bedtools(makebed.output.bed, params.gaps)
     mosdepth(crams, crais, params.reference, bedtools.output.bed)
     covdist(mosdepth.output.txt.collect())
