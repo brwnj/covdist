@@ -40,6 +40,7 @@ params.outdir = './results'
 params.cpus = 4
 
 params.idx = false
+params.stageInMode = "symlink"
 
 if(!params.crams) {
     exit 1, "--crams argument like '/path/to/*.cram' is required"
@@ -69,6 +70,8 @@ chroms = channel
     .filter( ~/(?!${exclude.collect {".*$it.*"}.join("|")})([a-zA-Z0-9_]+)/ )
 
 process makebed {
+    stageInMode: params.stageInMode
+
     input:
     val chrs
     path(reference)
