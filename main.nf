@@ -70,7 +70,7 @@ chroms = channel
     .filter( ~/(?!${exclude.collect {".*$it.*"}.join("|")})([a-zA-Z0-9_]+)/ )
 
 process makebed {
-    stageInMode: params.stageInMode
+    stageInMode params.stageInMode
 
     input:
     val chrs
